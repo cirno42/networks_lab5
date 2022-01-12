@@ -29,13 +29,9 @@ public class Proxy implements AutoCloseable {
                 int readyChannels = 0;
 
                 try {
-                    readyChannels = selector.select(10000);
+                    readyChannels = selector.select();
                 } catch (Exception ex) {
                     ex.printStackTrace();
-                }
-
-                if (readyChannels == 0) {
-                    continue;
                 }
 
                 Set<SelectionKey> modified = selector.selectedKeys();
